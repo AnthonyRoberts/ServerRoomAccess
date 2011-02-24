@@ -595,11 +595,12 @@ void logAccess(byte aMode) {
 }
 
 void log_time() {
-  char daynames[7][4] = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+  char daynames[7][4] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
   char shortmonth[12][4] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 
   RTC.get(rtc,true);                      // Get the date and time from the DS1307
-  file.print(&daynames[rtc[3]-1][0]);     // Day of the Week (Mon, Tue etc)
+  delay(5);
+  file.print(&daynames[rtc[3]][0]);     // Day of the Week (Mon, Tue etc)
   file.print(' ');
   file.print(rtc[4]);                     // Date of the Month (eg. 26)
   file.print(' ');
